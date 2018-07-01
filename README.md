@@ -16,6 +16,18 @@ After vendor:publish check configuration file in /config/adminauth.php
 
 - - - -
 
+#### Extend admin views
+Use this in blade
+````
+@extends('admin::layouts.gentelella')
+
+@section('content')
+    {{'Your content here'}}
+@endsection
+````
+
+- - - -
+
 #### Override views
 Add this to your ServiceProvider boot()
 ````
