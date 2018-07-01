@@ -1,10 +1,11 @@
-## LiteCode - Admin Gantellela
+## LiteCode - Admin Genterella
 
 - - - -
-
+Created from: https://github.com/puikinsh/gentelella
+Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.html
 ### Installation
 ````
-    composer require lite-code/adminagantelella
+    composer require lite-code/adminagentelella
     php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" /* --force */
     php artisan migrate --seed OR php artisan migrate:refresh --seed
 ````
