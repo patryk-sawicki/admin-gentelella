@@ -51,6 +51,8 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 //        $this->mergeConfigFrom(
 //            __DIR__.'../../../config/ocauth.php', 'ocauth'
 //        );
+
+        //$this->app['view']->addNamespace('admin', base_path() . '/resources/views/backend/');
     }
 
     /**
@@ -89,6 +91,15 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
 
         // register views
+        $this->loadViewsFrom(base_path() . '/resources/views/backend/', 'admin');
         $this->loadViewsFrom(__DIR__.'../../../resources/views/backend/', 'admin');
+
+
+        /*$views = [
+
+            resource_path(base_path() . '/resources/views/backend/'),
+            resource_path(__DIR__.'../../../resources/views/backend/'),
+        ];
+        $this->loadViewsFrom($views, 'admin');*/
     }
 }

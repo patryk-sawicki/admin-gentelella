@@ -17,8 +17,10 @@ After vendor:publish check configuration file in /config/adminauth.php
 
 - - - -
 
-#### Extend admin views
-Use this in blade
+#### Extend admin views or override if you must
+Use vendor package src/resources/views/backend for inspiration.
+Path "/resources/views/backend/" has a namespace "admin", just create your "backend" folder and use it.
+Use this in blade (ex: dashboard.blade.php)
 ````
 @extends('admin::layouts.gentelella')
 
@@ -29,8 +31,3 @@ Use this in blade
 
 - - - -
 
-#### Override views
-Add this to your ServiceProvider boot()
-````
-$this->app['view']->addNamespace('admin', base_path() . '/resources/views/backend');
-````
