@@ -9,10 +9,14 @@
     php artisan migrate --seed OR php artisan migrate:refresh --seed
 ````
 
-##### This package includes guard:admin, login page, migration + seed table:admin, config:adminauth
+- - - -
+
+#### This package includes guard:admin, login page, migration + seed table:admin, config:adminauth
 After vendor:publish check configuration file in /config/adminauth.php
 
-##### Override views
+- - - -
+
+#### Override views
 Add this to your ServiceProvider boot()
 ````
 $this->app['view']->addNamespace('admin', base_path() . '/resources/views/backend');
