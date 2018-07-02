@@ -42,14 +42,14 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'../../../config/adminauth.php' => config_path('adminauth.php')
-        ], 'views');
+        ], 'admin-gentelella-config');
 
         $this->publishes([
             __DIR__.'../../../resources/assets/' => public_path()
-        ], 'assets');
+        ], 'admin-gentelella-assets');
 //
 //        $this->mergeConfigFrom(
-//            __DIR__.'../../../config/ocauth.php', 'ocauth'
+//            __DIR__.'../../../config/adminauth.php', 'admin-gentelella-config'
 //        );
 
         //$this->app['view']->addNamespace('admin', base_path() . '/resources/views/backend/');

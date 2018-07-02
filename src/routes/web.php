@@ -1,7 +1,5 @@
 <?php
-Route::get('/test', function(){
-    echo 'testsss';
-});
+
 Route::group(['middleware' => ['admin']], function () {
 
     Route::prefix('admin')->group(function () {
