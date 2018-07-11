@@ -57,10 +57,10 @@ return [
                         ]
                     ]
                 ],
-                'tst' => [
+                'single_link' => [
                     'type' => 'link',
-                    'name' => 'Test',
-                    'icon' => '<i class="fa fa-edit"></i>',
+                    'name' => 'Single link',
+                    'icon' => '<i class="fa fa-link"></i>',
                     'route' => 'admin.login',
                     'url' => '',
                 ]

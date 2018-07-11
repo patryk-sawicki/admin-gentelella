@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>@yield('title')</title>
 
+    @stack('before-css')
     <!-- Bootstrap -->
     <link href="{{asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -26,4 +29,12 @@
 
     <!-- Custom Theme Style -->
     <link href="{{asset('backend/build/css/custom.min.css')}}" rel="stylesheet">
+    @stack('after-css')
+
+    @stack('before-scripts')
+    <!-- jQuery -->
+    <script src="{{asset('backend/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <!-- Bootstrap -->
+    <script src="{{asset('backend/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+
 </head>

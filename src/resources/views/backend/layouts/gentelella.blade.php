@@ -8,10 +8,6 @@
 
             @include('admin::includes.top-nav')
 
-{{--@section('sidebar')--}}
-    {{--This is the master sidebar.--}}
-{{--@show--}}
-
             <div class="right_col" role="main">
                 @yield('content')
             </div>
