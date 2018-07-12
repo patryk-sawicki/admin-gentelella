@@ -7,6 +7,12 @@ Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.ht
 ````
     composer require lite-code/adminagentelella
     php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" /* --force */
+    
+    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="migrations"
+    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="seeds"
+    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="seeds"
+    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="assets"
+    
     php artisan migrate --seed OR php artisan migrate:refresh --seed
 ````
 

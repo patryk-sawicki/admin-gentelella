@@ -27,6 +27,14 @@ class AdminGentelellaServiceProvider extends ServiceProvider
             __DIR__ . '../../../database/seeds' => $this->app->databasePath() . '/seeds'
         ], 'seeds');
 
+        $this->publishes([
+            __DIR__.'../../../config/adminauth.php' => config_path('adminauth.php')
+        ], 'seeds');
+
+        $this->publishes([
+            __DIR__.'../../../resources/assets/' => public_path()
+        ], 'assets');
+
 //        $this->publishes([
 //            __DIR__.'../../../app/Exceptions' => app_path() . '/Exceptions',
 //            __DIR__.'../../../app/Http' => app_path() . '/Http',
@@ -40,13 +48,6 @@ class AdminGentelellaServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'../../../config/authPassword.php', 'auth.passwords');
 //        $this->mergeConfigFrom(__DIR__.'../../../config/services.php', 'services');
 
-        $this->publishes([
-            __DIR__.'../../../config/adminauth.php' => config_path('adminauth.php')
-        ], 'admin-gentelella-config');
-
-        $this->publishes([
-            __DIR__.'../../../resources/assets/' => public_path()
-        ], 'admin-gentelella-assets');
 //
 //        $this->mergeConfigFrom(
 //            __DIR__.'../../../config/adminauth.php', 'admin-gentelella-config'
