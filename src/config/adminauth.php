@@ -14,7 +14,7 @@ return [
 
     'app_name' => 'Quiz',
 
-    'generate_menu' => true,
+    'generate_menu' => true, // this will generate
     'side_menu' => [
         'section_1' => [
             'name' => 'General',
@@ -30,42 +30,34 @@ return [
                             'route' => 'admin.dashboard',
                             'url' => '',
                         ],
-                        'dashboard2' => [
-                            'type' => 'link',
-                            'name' => 'Dashboard 2',
-                            'route' => 'admin.login',
-                            'url' => '',
-                        ]
+//                        'dashboard2' => [
+//                            'type' => 'link',
+//                            'name' => 'Dashboard 2',
+//                            'route' => 'admin.login',
+//                            'url' => '',
+//                        ]
                     ]
                 ],
-                'forms' => [
+                'manage_admins' => [
                     'type' => 'dropdown',
-                    'name' => 'Forms',
-                    'icon' => '<i class="fa fa-edit"></i>',
+                    'name' => 'Manage admins',
+                    'icon' => '<i class="fa fa-users"></i>',
                     'elements' => [
-                        'general_form' => [
+                        'admins' => [
                             'type' => 'link',
-                            'name' => 'General Forms',
-                            'route' => 'admin.login',
+                            'name' => 'Admins',
+                            'route' => 'admin.admins.index',
                             'url' => '',
                         ],
-                        'form_validation' => [
+                        'roles' => [
                             'type' => 'link',
-                            'name' => 'Form Validation',
-                            'route' => 'admin.login',
+                            'name' => 'Roles',
+                            'route' => 'admin.roles.index',
                             'url' => '',
                         ]
                     ]
                 ],
-                'single_link' => [
-                    'type' => 'link',
-                    'name' => 'Single link',
-                    'icon' => '<i class="fa fa-link"></i>',
-                    'route' => 'admin.login',
-                    'url' => '',
-                ]
             ]
-
         ]
     ],
 

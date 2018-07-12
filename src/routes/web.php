@@ -15,6 +15,9 @@ Route::group(['middleware' => ['admin']], function () {
 
         Route::get('/', 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\AdminController@dashboard')->name('admin.dashboard');
 
+        Route::resource('roles','LiteCode\AdminGentelella\App\Http\Controllers\Backend\RoleController',['as'=>'admin']);
+        Route::resource('admins','LiteCode\AdminGentelella\App\Http\Controllers\Backend\AdminUserController',['as'=>'admin']);
+
     });
 
 });
