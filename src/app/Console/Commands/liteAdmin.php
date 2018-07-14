@@ -4,6 +4,8 @@ namespace LiteCode\AdminGentelella\App\Console\Commands;
 
 use Illuminate\Console\Command;
 use LiteCode\AdminGentelella\App\Models\Admin;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class liteAdmin extends Command
 {
@@ -45,7 +47,8 @@ class liteAdmin extends Command
         if($do == 'y' ){
             $admin->name = $this->ask('Enter name');
             $admin->email = $this->ask('Enter email');
-            $admin->password = $this->ask('Set a password');
+            $password = $this->ask('Set a password');
+            $admin->password = bcrypt($password);
         }
         else if($do == 'n' ){
             $admin->name = 'Admin';
@@ -65,6 +68,12 @@ class liteAdmin extends Command
         }
 
         $admin->save();
+
+        if(!Role::where('name','Super Admin')->where('guard_name', 'admin')->first()){
+            $role = Role::create(['name' => 'Super Admin', 'guard_name' => 'admin']);
+        }
+
+        $admin->assignRole('Super Admin');
 
         $this->line('Admin created!');
         if($do == 'n'){

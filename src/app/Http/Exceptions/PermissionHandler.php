@@ -5,7 +5,7 @@ namespace LiteCode\AdminGentelella\App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class AdminauthHandler extends ExceptionHandler
+class PermissionHandler extends ExceptionHandler
 {
     /**
      * A list of the exception types that are not reported.
@@ -22,8 +22,8 @@ class AdminauthHandler extends ExceptionHandler
      * @var array
      */
     protected $dontFlash = [
-        'password',
-        'password_confirmation',
+//        'password',
+//        'password_confirmation',
     ];
 
     /**
@@ -48,41 +48,9 @@ class AdminauthHandler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-
-        if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-            $guard = array_get($exception->guards(), 0);
-            switch ($guard) {
-                case 'admin':
-                    $login = 'admin.login';
-                    return redirect()->route($login);
-                    break;
-                default:
-                    $login = 'login';
-                    return redirect()->route($login);
-                    break;
-            }
-            return redirect()->route($login);
-        }
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return response()->json(['User have not permission for this page access.']);
         }
-
-//        $class = get_class($exception);
-//
-//        switch($class) {
-//            case 'Illuminate\Auth\AuthenticationException':
-//                $guard = array_get($exception->guards(), 0);
-//                switch ($guard) {
-//                    case 'admin':
-//                        $login = 'admin.login';
-//                        break;
-//                    default:
-//                        $login = 'login';
-//                        break;
-//                }
-//
-//                return redirect()->route($login);
-//        }
 
         return parent::render($request, $exception);
     }

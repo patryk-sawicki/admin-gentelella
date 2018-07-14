@@ -30,7 +30,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'../../../config/adminauth.php' => config_path('adminauth.php')
-        ], 'seeds');
+        ], 'config');
 
         $this->publishes([
             __DIR__.'../../../resources/assets/' => public_path()
@@ -69,6 +69,10 @@ class AdminGentelellaServiceProvider extends ServiceProvider
             \Illuminate\Contracts\Debug\ExceptionHandler::class,
             \LiteCode\AdminGentelella\App\Exceptions\AdminauthHandler::class
         );
+//        $this->app->singleton(
+//            \Illuminate\Contracts\Debug\ExceptionHandler::class,
+//            \LiteCode\AdminGentelella\App\Exceptions\PermissionHandler::class
+//        );
 
         /* THIS ONES WILL REGISTER INTO: app\Http\Kernel.php => protected $middlewareGroups = []; */
         $this->app['router']->pushMiddlewareToGroup('admin', \App\Http\Middleware\EncryptCookies::class);
@@ -80,6 +84,8 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         /* THIS ONE WILL REGISTER INTO: app\Http\Kernel.php => protected $routeMiddleware = []; */
         $this->app['router']->aliasMiddleware('admin', \LiteCode\AdminGentelella\App\Http\Middleware\RedirectAuthenticatedAdmin::class);
+        $this->app['router']->aliasMiddleware('role', \Spatie\Permission\Middlewares\RoleMiddleware::class);
+        $this->app['router']->aliasMiddleware('permission', \Spatie\Permission\Middlewares\PermissionMiddleware::class);
 
         $this->commands([
             \LiteCode\AdminGentelella\App\Console\Commands\liteAdmin ::class,

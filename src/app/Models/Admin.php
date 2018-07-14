@@ -5,6 +5,7 @@ namespace LiteCode\AdminGentelella\App\Models;
 use Illuminate\Notifications\Notifiable;
 //use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
