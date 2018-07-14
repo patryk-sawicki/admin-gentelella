@@ -3,6 +3,7 @@
 namespace LiteCode\AdminGentelella\App\Providers;
 
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider;
 
 class AdminGentelellaServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(\Illuminate\Routing\Router $router)
     {
         Schema::defaultStringLength(191);
 
@@ -79,6 +80,10 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         /* THIS ONE WILL REGISTER INTO: app\Http\Kernel.php => protected $routeMiddleware = []; */
         $this->app['router']->aliasMiddleware('admin', \LiteCode\AdminGentelella\App\Http\Middleware\RedirectAuthenticatedAdmin::class);
+
+        $this->commands([
+            \LiteCode\AdminGentelella\App\Console\Commands\liteAdmin ::class,
+        ]);;
 
         // Bind occrud package
         //$this->app->register('Militaruc\Occrud\App\Providers\OCCrudServiceProvider');
