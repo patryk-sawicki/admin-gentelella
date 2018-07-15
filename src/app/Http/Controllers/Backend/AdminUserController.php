@@ -50,9 +50,9 @@ class AdminUserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:admins,email',
             'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            //'roles' => 'required'
         ]);
 
 
@@ -61,8 +61,9 @@ class AdminUserController extends Controller
 
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-
+        if(@$request->input('roles')) {
+            $user->assignRole($request->input('roles'));
+        }
 
         return redirect()->route('admin.admins.index')
             ->with('success','User created successfully');
@@ -110,9 +111,9 @@ class AdminUserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'sometimes|required|email|unique:admins,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            //'roles' => 'required'
         ]);
 
 
@@ -126,10 +127,13 @@ class AdminUserController extends Controller
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
 
 
-        $user->assignRole($request->input('roles'));
+        if(@$request->input('roles')){
+            DB::table('model_has_roles')->where('model_id',$id)->delete();
+            $user->assignRole($request->input('roles'));
+        }
+
 
 
         return redirect()->route('admin.admins.index')
