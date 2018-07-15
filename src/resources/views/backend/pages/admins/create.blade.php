@@ -65,7 +65,7 @@
                         @endforeach
                     </select>
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    <a href="{{ route('admin.quizzes.index') }}" class="btn btn-default" title="All Quizzes">Cancel</a>
+                    <a href="{{ route('admin.admins.index') }}" class="btn btn-default" title="All Quizzes">Cancel</a>
 
                 </form>
                 <!-- end form for validations -->

@@ -43,7 +43,19 @@
                         <div class="error">{{ $errors->first('name') }}</div>
                     @endif
                     <br>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-6 col-sm-6 col-md-3">
+                        <strong>Guards:</strong>
+                        <div class="form-group">
+                            @foreach(config('auth.guards') as $guard_name => $value)
+                                <div class="form-check">
+                                    <input class="form-check-input" value="{{$guard_name}}" name="guard_name" id="guard_name" type="radio" >
+                                    <label class="form-check-label">{{$guard_name}}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-9">
+                        <strong>Permission:</strong>
                         <div class="form-group">
                             @if ($errors->has('permission'))
                                 <div class="alert alert-error" role="alert" style="z-index: 1001;">
@@ -54,15 +66,14 @@
                                 </div>
                             @endif
                             @foreach($permissions as $permission)
-                                <div class="checkbox">
-                                    <label>
-                                        <input value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox" >
-                                        {{$permission->name}}
-                                    </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox" >
+                                    <label class="form-check-label">{{$permission->name}}</label>
                                 </div>
                             @endforeach
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('admin.roles.index') }}" class="btn btn-default" title="All Roles">Cancel</a>
 

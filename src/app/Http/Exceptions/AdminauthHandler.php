@@ -66,6 +66,9 @@ class AdminauthHandler extends ExceptionHandler
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return response()->json(['User have not permission for this page access.']);
         }
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+            return response()->json(['User have not permission for this page access.']);
+        }
 
 //        $class = get_class($exception);
 //

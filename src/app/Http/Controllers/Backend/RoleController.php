@@ -58,15 +58,18 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {//dd($request->all());
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'guard_name' => 'required',
+            //'permission' => 'required',
         ]);
 
 
-        $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+        $role = Role::create(['name' => $request->input('name'), 'guard_name' => $request->input('guard_name')]);
+        if($request->input('permission')){
+            $role->syncPermissions($request->input('permission'));
+        }
 
 
         return redirect()->route('admin.roles.index')
@@ -108,7 +111,6 @@ class RoleController extends Controller
         return view('admin::pages.roles.edit',compact('role','permissions','rolePermissions'));
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -117,19 +119,22 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {//dd($request->all());
         $this->validate($request, [
             'name' => 'required',
-            'permission' => 'required',
+            'guard_name' => 'required',
+            //'permission' => 'required',
         ]);
 
 
         $role = Role::find($id);
         $role->name = $request->input('name');
+        $role->guard_name = $request->input('guard_name');
         $role->save();
 
-
-        $role->syncPermissions($request->input('permission'));
+        if($request->input('permission')) {
+            $role->syncPermissions($request->input('permission'));
+        }
 
 
         return redirect()->route('admin.roles.index')

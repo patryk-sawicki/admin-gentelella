@@ -7,7 +7,7 @@ Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.ht
 
 ### Installation
 ````
-    composer require lite-code/adminagentelella
+    composer require lite-code/admingentelella
     php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" /* --force */
     
     php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="migrations"

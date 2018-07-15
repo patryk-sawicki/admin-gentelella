@@ -66,7 +66,7 @@
                                         <a href="{{ route('admin.admins.edit', ['admin' => $admin->id]) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                                         <a onclick="deleteConfirmation('<?php echo url('admin/admins/'.$admin->id); ?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         {{--<a onclick="document.getElementById('dQuiz_{{$quiz->id}}').submit();" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>--}}
-                                        <form action="{{ route('admin.quizzes.destroy', $admin->id) }}" method="post" style="display:none;" id="dQuiz_{{$admin->id}}">
+                                        <form action="{{ route('admin.admins.destroy', $admin->id) }}" method="post" style="display:none;" id="dQuiz_{{$admin->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit">
@@ -87,7 +87,6 @@
     <div id="showQuizContainer"></div>
 
     @push('after-scripts')
-        @include('admin::quiz.scripts.quizzes')
         @include('admin::scripts.deleteConfirmation')
     @endpush
 

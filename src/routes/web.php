@@ -18,6 +18,7 @@ Route::group(['middleware' => ['admin']], function () {
 //        Route::group(['middleware' => ['role:Super Admin,Admin']], function() {
             Route::resource('roles','LiteCode\AdminGentelella\App\Http\Controllers\Backend\RoleController',['as'=>'admin']);
 //        });
+//        Route::resource('permissions','LiteCode\AdminGentelella\App\Http\Controllers\Backend\PermissionController',['as'=>'admin']);
         Route::resource('admins','LiteCode\AdminGentelella\App\Http\Controllers\Backend\AdminUserController',['as'=>'admin']);
 //
     });

@@ -9,7 +9,6 @@
             <div class="title_left">
                 <h3>Roles</h3>
             </div>
-
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                     <div class="input-group">
@@ -22,7 +21,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-
+        <h1>Trebuie implementat js pentru selectie dinamica guard_name si seederi pentru permisiuni si roluri cu asocieri. Implementare CRUD permisiuni</h1>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -40,6 +39,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Guard name</th>
+                                <th>Permissions</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -48,6 +49,12 @@
                                 <tr>
                                     <th scope="row">{{$role->id}}</th>
                                     <td>{{$role->name}}</td>
+                                    <td><label class="badge badge-success">{{$role->guard_name}}</label></td>
+                                    <td>
+                                        @foreach($role->permissions as $permission)
+                                            <label class="badge badge-success">{{$permission->name}}</label>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         {{--<a href="{{ route('admin.quizzes.show', ['quiz' => $quiz->id]) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>--}}
                                         <a onclick="showQuiz({{$role->id}});" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
