@@ -89,6 +89,10 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         $this->commands([
             \LiteCode\AdminGentelella\App\Console\Commands\liteAdmin ::class,
+            \LiteCode\AdminGentelella\App\Console\Commands\liteDropPackageTables ::class,
+            \LiteCode\AdminGentelella\App\Console\Commands\liteDropTables ::class,
+            \LiteCode\AdminGentelella\App\Console\Commands\dropTables ::class,
+            \LiteCode\AdminGentelella\App\Console\Commands\liteInstall ::class,
         ]);;
 
         // Bind occrud package

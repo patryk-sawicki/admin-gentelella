@@ -6,26 +6,9 @@ Created from: https://github.com/puikinsh/gentelella
 Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.html
 
 ### Installation
-````
-    composer require lite-code/admingentelella
-    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" /* --force */
-    
-    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="migrations"
-    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="config"
-    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="seeds"
-    php artisan vendor:publish --provider="LiteCode\Admingantellela\App\Providers\AdmingantellelaServiceProvider" --tag="assets"
-    
-    // spatie/laravel-permission
-    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
-    php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
-    
-    php artisan migrate --seed OR php artisan migrate:refresh --seed
-    
-    /* Not used yet
-    php artisan db:seed --class=AdminTableSeeder
-    php artisan db:seed --class=PermissionTableSeeder
-    */
-````
+``` composer require lite-code/admingentelella ```
+
+``` php artisan lite:install ```
 
 - - - -
 
@@ -44,6 +27,18 @@ $this->middleware('auth:admin', ['except' => ['logout']]);
 $this->middleware('role:Super Admin');
 // multiple assingment roles per middleware
 $this->middleware('role:Super Admin|Another Role|My Role');
+
+// by permission in (for example) RolesController
+
+function __construct()
+{
+    $this->middleware('auth:admin', ['except' => ['logout']]);
+
+    $this->middleware('permission:role-read');
+    $this->middleware('permission:role-create', ['only' => ['create','store']]);
+    $this->middleware('permission:role-update', ['only' => ['edit','update']]);
+    $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+}
 ```
 
 - - - -

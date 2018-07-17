@@ -64,7 +64,8 @@ class AdminauthHandler extends ExceptionHandler
             return redirect()->route($login);
         }
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
-            return response()->json(['User have not permission for this page access.']);
+            //return response()->json(['User have not permission for this page access.']);
+            return redirect()->back()->with('warning','ATENTION! You have no permission on that page and have been redirected back!');;
         }
 
 //        $class = get_class($exception);
