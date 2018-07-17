@@ -45,19 +45,7 @@
                         <div class="error">{{ $errors->first('name') }}</div>
                     @endif
                     <br>
-                    <div class="col-xs-6 col-sm-6 col-md-3">
-                        <strong>Guards:</strong>
-                        <div class="form-group">
-                            @foreach(config('auth.guards') as $guard_name => $value)
-                                <div class="form-check">
-                                    <input class="form-check-input" value="{{$guard_name}}" name="guard_name" id="guard_name" type="radio"
-                                    @if($guard_name == $role->guard_name) checked @endif>
-                                    <label class="form-check-label">{{$guard_name}}</label>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-9">
+                    <div class="col-xs-12">
                         <div class="form-group">
                             <strong>Permission:</strong>
                             @if ($errors->has('permission'))
@@ -68,15 +56,18 @@
                                     </button>
                                 </div>
                             @endif
-                            @foreach($permissions as $permission)
-                                <div class="form-check">
-                                    <input class="form-check-input" value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox"
-                                        @if(in_array($permission->id, $rolePermissions)) checked @endif >
-                                    <label class="form-check-label">{{$permission->name}}</label>
-                                </div>
-                            @endforeach
+                            <div  id="createRolePermissions">
+                                @foreach($permissions as $permission)
+                                    <div class="form-check col-md-3">
+                                        <input class="form-check-input" value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox"
+                                            @if(in_array($permission->id, $rolePermissions)) checked @endif >
+                                        <label class="form-check-label">{{$permission->name}}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
                     <br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('admin.roles.index') }}" class="btn btn-default" title="All Quizzes">Cancel</a>

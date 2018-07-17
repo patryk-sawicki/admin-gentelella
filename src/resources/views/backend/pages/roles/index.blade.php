@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <h1>Trebuie implementat js pentru selectie dinamica guard_name si seederi pentru permisiuni si roluri cu asocieri. Implementare CRUD permisiuni</h1>
+
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -32,48 +32,20 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
-                    <div class="x_content">
+                    <div class="x_content" id="paginateRoles">
 
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Guard name</th>
-                                <th>Permissions</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($roles as $role)
-                                <tr>
-                                    <th scope="row">{{$role->id}}</th>
-                                    <td>{{$role->name}}</td>
-                                    <td><label class="badge badge-success">{{$role->guard_name}}</label></td>
-                                    <td>
-                                        @foreach($role->permissions as $permission)
-                                            <label class="badge badge-success">{{$permission->name}}</label>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        {{--<a href="{{ route('admin.quizzes.show', ['quiz' => $quiz->id]) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>--}}
-                                        <a onclick="showQuiz({{$role->id}});" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('admin.roles.edit', ['admin' => $role->id]) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-                                        <a onclick="deleteConfirmation('<?php echo url('admin/roles/'.$role->id); ?>')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                @include('admin::pages.roles.components.paginateRoles')
 
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div id="showRoleContainer"></div>
 
     @push('after-scripts')
+        @include('admin::pages.roles.scripts.pagination')
         @include('admin::scripts.deleteConfirmation')
     @endpush
 

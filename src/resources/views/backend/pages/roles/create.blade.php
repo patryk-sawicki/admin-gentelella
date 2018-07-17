@@ -48,7 +48,8 @@
                         <div class="form-group">
                             @foreach(config('auth.guards') as $guard_name => $value)
                                 <div class="form-check">
-                                    <input class="form-check-input" value="{{$guard_name}}" name="guard_name" id="guard_name" type="radio" >
+                                    <input class="form-check-input" value="{{$guard_name}}" name="guard_name" id="guard_name" type="radio"
+                                    onclick="listRolePermission('{{$guard_name}}')">
                                     <label class="form-check-label">{{$guard_name}}</label>
                                 </div>
                             @endforeach
@@ -65,14 +66,18 @@
                                     </button>
                                 </div>
                             @endif
-                            @foreach($permissions as $permission)
-                                <div class="form-check">
-                                    <input class="form-check-input" value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox" >
-                                    <label class="form-check-label">{{$permission->name}}</label>
-                                </div>
-                            @endforeach
+                            <div  id="createRolePermissions">
+                                @foreach($permissions as $permission)
+                                    <div class="form-check col-md-3">
+                                        <input class="form-check-input" value="{{$permission->id}}" name="permission[]" id="permissions" type="checkbox" >
+                                        <label class="form-check-label">{{$permission->name}}</label>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
+                    <br>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a href="{{ route('admin.roles.index') }}" class="btn btn-default" title="All Roles">Cancel</a>
@@ -83,5 +88,9 @@
             </div>
         </div>
     </div>
+
+    @push('after-scripts')
+        @include('admin::pages.roles.scripts.manageGuards')
+    @endpush
 
 @endsection

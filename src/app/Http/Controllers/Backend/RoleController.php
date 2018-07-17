@@ -33,7 +33,19 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
+        if($request->ajax()) {
+            if($request->guard_name){
+                $permissions = Permission::where('guard_name', $request->guard_name)->orderBy('name','ASC')->get();
+                return view('admin::pages.roles.components.permissions',compact('permissions'));
+            }
+            if($request->page){
+                $roles = Role::orderBy('id','DESC')->paginate(10);
+                return view('admin::pages.roles.components.paginateRoles',compact('roles'))
+                    ->with('i', ($request->input('page', 1) - 1) * 5);
+            }
+
+        }
+        $roles = Role::orderBy('id','DESC')->paginate(10);
         return view('admin::pages.roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -101,8 +113,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::find($id);
-        $permissions = Permission::get();
+        $role = Role::findOrFail($id);
+        $permissions = Permission::where('guard_name',$role->guard_name)->get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
