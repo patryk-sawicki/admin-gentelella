@@ -79,6 +79,8 @@ class liteDropPackageTables extends Command
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         DB::commit();
 
+        DB::table('migrations')->where('migration', 'like', '%' . 'create_permission_tables' . '%')->delete();
+        
         $this->comment(PHP_EOL."If no errors showed up, all tables were dropped".PHP_EOL);
 
     }
