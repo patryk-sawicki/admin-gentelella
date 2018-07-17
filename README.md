@@ -23,13 +23,15 @@ php artisan lite:admin
 ```
 #### Controllers middleware:
 ```
-$this->middleware('auth:admin', ['except' => ['logout']]);
-$this->middleware('role:Super Admin');
-// multiple assingment roles per middleware
-$this->middleware('role:Super Admin|Another Role|My Role');
+function __construct()
+{
+    $this->middleware('auth:admin', ['except' => ['logout']]);
+    $this->middleware('role:Super Admin');
+    // multiple assingment roles per middleware
+    $this->middleware('role:Super Admin|Another Role|My Role');
+}
 
 // by permission in (for example) RolesController
-
 function __construct()
 {
     $this->middleware('auth:admin', ['except' => ['logout']]);
