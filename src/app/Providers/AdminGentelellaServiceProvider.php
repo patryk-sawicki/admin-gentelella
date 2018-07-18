@@ -88,6 +88,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
         // register views
         $this->loadViewsFrom(base_path() . '/resources/views/backend/', 'admin');
         $this->loadViewsFrom(ADMINGENTELELLA_PATH . '/resources/views/backend/', 'admin');
+        $this->loadViewsFrom(ADMINGENTELELLA_PATH . '/resources/views/crud/', 'admin');
 
     }
 }

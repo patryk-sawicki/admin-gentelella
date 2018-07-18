@@ -1,27 +1,25 @@
 <?php
-
-namespace LiteCode\AdminGentelella\App\Http\Controllers;
+namespace LiteCode\AdminGentelella;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use LiteCode\AdminGentelella\CRUD;
 
 class LiteController extends Controller
 {
-    /**
-     * LiteController constructor.
-     */
-    public function __construct()
-    {
-        //
-    }
+    use CRUD;
+    public $model;
+    public $fields = [];
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data = $this->getInstance($request);
+        return view('admin::index', $data);
     }
 
     /**
