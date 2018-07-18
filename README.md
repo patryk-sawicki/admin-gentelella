@@ -6,9 +6,13 @@ Created from: https://github.com/puikinsh/gentelella
 Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.html
 
 ### Installation
-``` composer require lite-code/admingentelella ```
+```` 
+composer require lite-code/admingentelella 
+````
 
-``` php artisan lite:install ```
+```` 
+php artisan lite:install 
+````
 
 - - - -
 
@@ -18,11 +22,12 @@ After vendor:publish check configuration file in /config/adminauth.php
 - - - - 
 
 #### Artisan command for creating admin user with role "Super Admin":
-```
+````
 php artisan lite:admin
-```
+````
+
 #### Controllers middleware:
-```
+````
 function __construct()
 {
     $this->middleware('auth:admin', ['except' => ['logout']]);
