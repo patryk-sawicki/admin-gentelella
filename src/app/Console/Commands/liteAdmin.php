@@ -40,6 +40,7 @@ class liteAdmin extends Command
      */
     public function handle()
     {
+        copy(__DIR__.'./../../config/adminauth.php', config_path('/adminauth.php'));
         $admin = new Admin;
 
         $do = $this->choice('Create custom admin? [ y , n ]', ['y','n']);

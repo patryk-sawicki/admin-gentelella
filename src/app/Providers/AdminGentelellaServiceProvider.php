@@ -18,22 +18,25 @@ class AdminGentelellaServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        include __DIR__ . '../../../routes/web.php';
+        if (!defined('ADMINGENTELELLA_PATH')) {
+            define('ADMINGENTELELLA_PATH', realpath(__DIR__.'/../../'));
+        }
+        include ADMINGENTELELLA_PATH . '/routes/web.php';
 
         $this->publishes([
-            __DIR__ . '../../../database/migrations' => $this->app->databasePath() . '/migrations'
+            ADMINGENTELELLA_PATH . '/database/migrations' => $this->app->databasePath() . '/migrations'
         ], 'migrations');
 
         $this->publishes([
-            __DIR__ . '../../../database/seeds' => $this->app->databasePath() . '/seeds'
+            ADMINGENTELELLA_PATH . '/database/seeds' => $this->app->databasePath() . '/seeds'
         ], 'seeds');
 
         $this->publishes([
-            __DIR__.'../../../config/adminauth.php' => config_path('adminauth.php')
+            ADMINGENTELELLA_PATH . '/config/adminauth.php' => config_path('adminauth.php')
         ], 'config');
 
         $this->publishes([
-            __DIR__.'../../../resources/assets/' => public_path()
+            ADMINGENTELELLA_PATH . '/resources/assets/' => public_path()
         ], 'assets');
 
 //        $this->publishes([
@@ -44,9 +47,9 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 //        ], 'app');
 //
 //
-        $this->mergeConfigFrom(__DIR__.'../../../config/authGuards.php', 'auth.guards');
-        $this->mergeConfigFrom(__DIR__.'../../../config/authProvider.php', 'auth.providers');
-        $this->mergeConfigFrom(__DIR__.'../../../config/authPassword.php', 'auth.passwords');
+        $this->mergeConfigFrom(ADMINGENTELELLA_PATH . '/config/authGuards.php', 'auth.guards');
+        $this->mergeConfigFrom(ADMINGENTELELLA_PATH . '/config/authProvider.php', 'auth.providers');
+        $this->mergeConfigFrom(ADMINGENTELELLA_PATH . '/config/authPassword.php', 'auth.passwords');
 //        $this->mergeConfigFrom(__DIR__.'../../../config/services.php', 'services');
 
 //
@@ -64,6 +67,9 @@ class AdminGentelellaServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (!defined('ADMINGENTELELLA_PATH')) {
+            define('ADMINGENTELELLA_PATH', realpath(__DIR__.'/../../'));
+        }
         /* REGISTER EXCEPTION HANDLER FOR guard: "auth:admin" - solve redirect if unauthenticated user hit admin url */
         $this->app->singleton(
             \Illuminate\Contracts\Debug\ExceptionHandler::class,
@@ -108,7 +114,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         // register views
         $this->loadViewsFrom(base_path() . '/resources/views/backend/', 'admin');
-        $this->loadViewsFrom(__DIR__.'../../../resources/views/backend/', 'admin');
+        $this->loadViewsFrom(ADMINGENTELELLA_PATH . '/resources/views/backend/', 'admin');
 
 
         /*$views = [
