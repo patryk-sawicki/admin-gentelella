@@ -63,7 +63,7 @@ class liteInstall extends Command
             '--provider' => 'LiteCode\AdminGentelella\App\Providers\AdminGentelellaServiceProvider',
             '--force' => true
         ]);
-        $this->call('migrate:refresh');
+        $this->call('migrate');
         $this->info('migrated!');
 
 
