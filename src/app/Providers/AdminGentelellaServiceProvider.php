@@ -31,7 +31,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
             ADMINGENTELELLA_PATH . '/database/seeds' => $this->app->databasePath() . '/seeds'
         ], 'seeds');
 
-        if(file_exists(ADMINGENTELELLA_PATH . '/config/adminauth.php') == false){
+        if(file_exists($this->app->databasePath() . '/config/adminauth.php') == false){
             $this->publishes([
                 ADMINGENTELELLA_PATH . '/config/adminauth.php' => config_path('adminauth.php')
             ], 'config');
