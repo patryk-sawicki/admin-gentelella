@@ -43,27 +43,15 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    @foreach($fields as $fieldName => $fieldData)
-                                        <th>{{ $fieldData->title }}</th>
-                                    @endforeach
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($items as $item)
-                                    <tr>
-                                    @foreach($fields as $fieldName => $fieldData)
-                                        <td>{{ $fieldData->type->list($item->$fieldName) }}</td>
-                                    @endforeach
-                                        <td>@mdo</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                       <form action="{{url('/admin/'.$slug.'/'.$item->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                           @csrf
+                           @method('PUT')
+                            @foreach($fields as $fieldName => $fieldData)
+                                 {{ $fieldData->type->edit($fieldName, $item->$fieldName, $fieldData) }}
+                            @endforeach
+                            <br>
+                           <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                       </form>
 
                     </div>
                 </div>
@@ -73,5 +61,9 @@
 
         </div>
     </div>
+
+    @push('after-scripts')
+
+    @endpush
 
 @endsection

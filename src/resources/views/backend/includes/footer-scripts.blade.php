@@ -31,6 +31,10 @@
 <!-- bootstrap-daterangepicker -->
 <script src="{{asset('backend/vendors/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('backend/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+<!-- bootstrap-wysiwyg -->
+<script src="{{asset('backend/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
+<script src="{{asset('backend/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
+<script src="{{asset('backend/vendors/google-code-prettify/src/prettify.js')}}"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="{{asset('backend/build/js/custom.min.js')}}"></script>

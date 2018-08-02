@@ -91,4 +91,5 @@ class AdminGentelellaServiceProvider extends ServiceProvider
         $this->loadViewsFrom(ADMINGENTELELLA_PATH . '/resources/views/crud/', 'admin');
 
     }
+
 }

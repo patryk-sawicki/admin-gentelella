@@ -19,7 +19,8 @@
     <link href="{{asset('backend/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{asset('backend/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
-
+    <!-- bootstrap-wysiwyg -->
+    <link href="{{asset('backend/vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="{{asset('backend/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- JQVMap -->
