@@ -3,6 +3,6 @@ return [
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => env('LITE_ADMIN_MODEL'.'::class', LiteCode\AdminGentelella\App\Models\Admin::class),
+            'model' => env('LITE_ADMIN_MODEL', LiteCode\AdminGentelella\App\Models\Admin::class),
         ]
 ];
