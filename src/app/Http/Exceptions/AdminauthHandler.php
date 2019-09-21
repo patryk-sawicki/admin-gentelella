@@ -50,7 +50,7 @@ class AdminauthHandler extends ExceptionHandler
     {
 
         if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
-            $guard = array_get($exception->guards(), 0);
+            $guard = $exception->guards()[0];
             switch ($guard) {
                 case 'admin':
                     $login = 'admin.login';
