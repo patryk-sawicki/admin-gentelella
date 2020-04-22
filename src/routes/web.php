@@ -4,9 +4,10 @@ Route::group(['middleware' => ['admin']], function () {
 
     Route::prefix('admin')->group(function () {
 
-        Route::get('/login', 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminLoginController@showLoginForm')->name('admin.login');
-        Route::post('/login', 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminLoginController@login')->name('admin.login.submit');
-        Route::post('/logout', 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminLoginController@logout')->name('admin.logout');
+        $adminLoginControllerRoute=env('LITE_ADMIN_LOGIN_CONTROLLER') ?? 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminLoginController';
+        Route::get('/login', $adminLoginControllerRoute.'@showLoginForm')->name('admin.login');
+        Route::post('/login', $adminLoginControllerRoute.'@login')->name('admin.login.submit');
+        Route::post('/logout', $adminLoginControllerRoute.'@logout')->name('admin.logout');
 
 //        Route::post('/password/email', '\App\Http\Controllers\Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
 //        Route::get('/password/reset', '\App\Http\Controllers\Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
