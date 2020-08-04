@@ -9,15 +9,18 @@ Route::group(['middleware' => ['admin']], function () {
         Route::post('/login', $adminLoginControllerRoute.'@login')->name('admin.login.submit');
         Route::post('/logout', $adminLoginControllerRoute.'@logout')->name('admin.logout');
 
-//        Route::post('/password/email', '\App\Http\Controllers\Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-//        Route::get('/password/reset', '\App\Http\Controllers\Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-//        Route::post('/password/reset', '\App\Http\Controllers\Auth\AdminResetPasswordController@reset');
-//        Route::get('/password/reset/{token}', '\App\Http\Controllers\Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+        $adminForgotPasswordControllerRoute=env('LITE_ADMIN_FORGOT_PASSWORD_CONTROLLER') ?? 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminForgotPasswordController';
+        Route::post('/password/email', $adminForgotPasswordControllerRoute.'@sendResetLinkEmail')->name('admin.password.email');
+        Route::get('/password/reset', $adminForgotPasswordControllerRoute.'@showLinkRequestForm')->name('admin.password.request');
+
+        $adminResetPasswordControllerRoute=env('LITE_ADMIN_RESER_PASSWORD_CONTROLLER') ?? 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth\AdminResetPasswordController';
+        Route::post('/password/reset', $adminResetPasswordControllerRoute.'@reset');
+        Route::get('/password/reset/{token}', $adminResetPasswordControllerRoute.'@showResetForm')->name('admin.password.reset');
 
         Route::get('/', 'LiteCode\AdminGentelella\App\Http\Controllers\Backend\AdminController@dashboard')->name('admin.dashboard');
 
 //        Route::group(['middleware' => ['role:Super Admin,Admin']], function() {
-            Route::resource('roles','LiteCode\AdminGentelella\App\Http\Controllers\Backend\RoleController',['as'=>'admin']);
+        Route::resource('roles','LiteCode\AdminGentelella\App\Http\Controllers\Backend\RoleController',['as'=>'admin']);
 //        });
 //        Route::resource('permissions','LiteCode\AdminGentelella\App\Http\Controllers\Backend\PermissionController',['as'=>'admin']);
         Route::resource('admins','LiteCode\AdminGentelella\App\Http\Controllers\Backend\AdminUserController',['as'=>'admin']);

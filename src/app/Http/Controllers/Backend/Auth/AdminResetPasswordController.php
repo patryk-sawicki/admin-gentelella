@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -42,17 +42,17 @@ class AdminResetPasswordController extends Controller
 
     protected function guard()
     {
-      return Auth::guard('admin');
+        return Auth::guard('admin');
     }
 
     protected function broker()
     {
-      return Password::broker('admins');
+        return Password::broker('admins');
     }
 
     public function showResetForm(Request $request, $token = null)
     {
-        return view('auth.passwords.reset-admin')->with(
+        return view(config('adminauth.view.passwords_reset-admin'))->with(
             ['token' => $token, 'email' => $request->email]
         );
     }
