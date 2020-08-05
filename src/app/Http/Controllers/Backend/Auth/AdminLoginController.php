@@ -22,12 +22,20 @@ class AdminLoginController extends Controller
     public function login(Request $request)
     {
       // Validate the form data
-      $x = $this->validate($request, [
+      $this->validate($request, [
         'email'   => 'required',
         'password' => 'required|min:6'
       ]);
+
       // Attempt to log the user in
       if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+          /*Control whether the user is active.*/
+          if(auth('admin')->user()->active===0)
+          {
+              auth('admin')->logout();
+              return redirect()->back()->withInput($request->only('email', 'remember'));
+          }
+
         // if successful, then redirect to their intended location
         return redirect()->intended(route(config('adminauth.route.redirectAuthenticated')));
       }
