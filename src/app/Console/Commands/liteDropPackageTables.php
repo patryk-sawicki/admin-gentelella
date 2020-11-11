@@ -1,5 +1,5 @@
 <?php
-namespace LiteCode\AdminGentelella\App\Console\Commands;
+namespace LiteCode\AdminGentelella\app\Console\Commands;
 
 use DB;
 use Illuminate\Console\Command;

@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Http\Controllers\Backend;
+namespace LiteCode\AdminGentelella\app\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Http\Controllers\Backend\Auth;
+namespace LiteCode\AdminGentelella\app\Http\Controllers\Backend\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

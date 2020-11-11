@@ -1,10 +1,10 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Http\Controllers\Backend;
+namespace LiteCode\AdminGentelella\app\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use LiteCode\AdminGentelella\App\Models\Admin as User;
+use LiteCode\AdminGentelella\app\Models\Admin as User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;

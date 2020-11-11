@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LiteCode\\AdminGentelella\\App\\Providers\\AdminGentelellaServiceProvider"
+                "LiteCode\\AdminGentelella\\app\\Providers\\AdminGentelellaServiceProvider"
             ]
         }
     }

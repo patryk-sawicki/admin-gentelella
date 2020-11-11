@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Models;
+namespace LiteCode\AdminGentelella\app\Models;
 
 use Illuminate\Notifications\Notifiable;
 //use Laravel\Passport\HasApiTokens;
