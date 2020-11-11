@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Exceptions;
+namespace LiteCode\AdminGentelella\app\Http\Exceptions;
 
 use Throwable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

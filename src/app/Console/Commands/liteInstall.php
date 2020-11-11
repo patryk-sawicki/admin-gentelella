@@ -1,9 +1,9 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Console\Commands;
+namespace LiteCode\AdminGentelella\app\Console\Commands;
 
 use Illuminate\Console\Command;
-use LiteCode\AdminGentelella\App\Models\Admin;
+use LiteCode\AdminGentelella\app\Models\Admin;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -60,7 +60,7 @@ class liteInstall extends Command
         $this->line('####### LiteCode\AdminGentelella "assets" will take a wile to be published #######');
         $this->line('##################################################################################');
         $this->call('vendor:publish', [
-            '--provider' => 'LiteCode\AdminGentelella\App\Providers\AdminGentelellaServiceProvider',
+            '--provider' => 'LiteCode\AdminGentelella\app\Providers\AdminGentelellaServiceProvider',
             '--force' => true
         ]);
         $this->call('migrate');

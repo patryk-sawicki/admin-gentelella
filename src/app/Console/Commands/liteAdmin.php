@@ -1,9 +1,9 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Console\Commands;
+namespace LiteCode\AdminGentelella\app\Console\Commands;
 
 use Illuminate\Console\Command;
-use LiteCode\AdminGentelella\App\Models\Admin;
+use LiteCode\AdminGentelella\app\Models\Admin;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 

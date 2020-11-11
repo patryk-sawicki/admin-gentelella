@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Providers;
+namespace LiteCode\AdminGentelella\app\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Events\Dispatcher;
@@ -61,7 +61,7 @@ class AdminGentelellaServiceProvider extends ServiceProvider
         /* REGISTER EXCEPTION HANDLER FOR guard: "auth:admin" - solve redirect if unauthenticated user hit admin url */
         $this->app->singleton(
             \Illuminate\Contracts\Debug\ExceptionHandler::class,
-            \LiteCode\AdminGentelella\App\Exceptions\AdminauthHandler::class
+            \LiteCode\AdminGentelella\app\Http\Exceptions\AdminauthHandler::class
         );
 
         /* THIS ONES WILL REGISTER INTO: app\Http\Kernel.php => protected $middlewareGroups = []; */
@@ -73,16 +73,16 @@ class AdminGentelellaServiceProvider extends ServiceProvider
         $this->app['router']->pushMiddlewareToGroup('admin', \Illuminate\Routing\Middleware\SubstituteBindings::class);
 
         /* THIS ONE WILL REGISTER INTO: app\Http\Kernel.php => protected $routeMiddleware = []; */
-        $this->app['router']->aliasMiddleware('admin', \LiteCode\AdminGentelella\App\Http\Middleware\RedirectAuthenticatedAdmin::class);
+        $this->app['router']->aliasMiddleware('admin', \LiteCode\AdminGentelella\app\Http\Middleware\RedirectAuthenticatedAdmin::class);
         $this->app['router']->aliasMiddleware('role', \Spatie\Permission\Middlewares\RoleMiddleware::class);
         $this->app['router']->aliasMiddleware('permission', \Spatie\Permission\Middlewares\PermissionMiddleware::class);
 
         $this->commands([
-            \LiteCode\AdminGentelella\App\Console\Commands\liteAdmin ::class,
-            \LiteCode\AdminGentelella\App\Console\Commands\liteDropPackageTables ::class,
-            \LiteCode\AdminGentelella\App\Console\Commands\liteDropTables ::class,
-            \LiteCode\AdminGentelella\App\Console\Commands\dropTables ::class,
-            \LiteCode\AdminGentelella\App\Console\Commands\liteInstall ::class,
+            \LiteCode\AdminGentelella\app\Console\Commands\liteAdmin ::class,
+            \LiteCode\AdminGentelella\app\Console\Commands\liteDropPackageTables ::class,
+            \LiteCode\AdminGentelella\app\Console\Commands\liteDropTables ::class,
+            \LiteCode\AdminGentelella\app\Console\Commands\dropTables ::class,
+            \LiteCode\AdminGentelella\app\Console\Commands\liteInstall ::class,
         ]);
 
         // register views

@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteCode\AdminGentelella\App\Http\Middleware;
+namespace LiteCode\AdminGentelella\app\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
