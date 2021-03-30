@@ -1,8 +1,13 @@
 {
-    "name": "lite-code/admingentelella",
-    "description": "OCAuth",
+    "name": "patryk-sawicki/admin-gentelella",
+    "description": "Gentelella",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Patryk Sawicki",
+            "email": "patryk@patryksawicki.pl",
+            "role": "Developer"
+        },
         {
             "name": "lite-code",
             "email": "litecodedeluxe@gmail.com",

@@ -7,7 +7,7 @@ Official preview of Genterella: https://colorlib.com/polygon/gentelella/index.ht
 
 ### Installation
 ```` 
-composer require lite-code/admingentelella 
+composer require patryk-sawicki/admin-gentelella 
 ````
 
 ```` 
