@@ -55,13 +55,10 @@ class AdminauthHandler extends ExceptionHandler
                 case 'admin':
                     $login = 'admin.login';
                     return redirect()->route($login);
-                    break;
                 default:
-                    $login = 'login';
-                    return redirect()->route($login);
-                    break;
+                    return redirect($exception->redirectTo());
             }
-            return redirect()->route($login);
+            return redirect($exception->redirectTo());
         }
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             //return response()->json(['User have not permission for this page access.']);
