@@ -1,5 +1,8 @@
 #Changelog
 
+##1.3.6
+* AdminauthHandler - Response for unauthenticated API call.
+
 ##1.3.5
 * AdminauthHandler - Fixed redirection handling in the absence of authorization.
 

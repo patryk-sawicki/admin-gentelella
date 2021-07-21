@@ -48,6 +48,9 @@ class AdminauthHandler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
 
         if ($exception instanceof \Illuminate\Auth\AuthenticationException) {
             $guard = $exception->guards()[0];
