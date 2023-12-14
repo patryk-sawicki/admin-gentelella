@@ -74,8 +74,8 @@ class AdminGentelellaServiceProvider extends ServiceProvider
 
         /* THIS ONE WILL REGISTER INTO: app\Http\Kernel.php => protected $routeMiddleware = []; */
         $this->app['router']->aliasMiddleware('admin', \LiteCode\AdminGentelella\app\Http\Middleware\RedirectAuthenticatedAdmin::class);
-        $this->app['router']->aliasMiddleware('role', \Spatie\Permission\Middlewares\RoleMiddleware::class);
-        $this->app['router']->aliasMiddleware('permission', \Spatie\Permission\Middlewares\PermissionMiddleware::class);
+        $this->app['router']->aliasMiddleware('role', \Spatie\Permission\Middleware\RoleMiddleware::class);
+        $this->app['router']->aliasMiddleware('permission', \Spatie\Permission\Middleware\PermissionMiddleware::class);
 
         $this->commands([
             \LiteCode\AdminGentelella\app\Console\Commands\liteAdmin ::class,

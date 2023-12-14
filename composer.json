@@ -17,8 +17,8 @@
     "require": {
         "php": ">=7.1.0",
         "ext-mbstring": "*",
-        "laravel/framework": ">=5.5.28",
-        "spatie/laravel-permission": ">=2.12"
+        "laravel/framework": ">=10.37.3",
+        "spatie/laravel-permission": ">=6.2"
     },
     "require-dev": {
     },

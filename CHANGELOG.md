@@ -1,5 +1,8 @@
 #Changelog
 
+##1.4.0
+* Updated dependencies.
+
 ##1.3.6
 * AdminauthHandler - Response for unauthenticated API call.
 
