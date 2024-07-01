@@ -1,5 +1,8 @@
 #Changelog
 
+##1.4.1
+* Older framework compatibility.
+
 ##1.4.0
 * Updated dependencies.
 
